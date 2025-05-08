@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: ebf4f5;
+}
+
+.container {
+    position: relative;
+    width: 850;
+    height: 650;
+    background-color: #fff;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+    overflow: hidden;
+}
+
+.form-box {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #333;
+    padding: 40px;
+    border-radius: 30px;
+    z-index: 1;
+    transition: .4s ease-in-out 1s, visibility 0s 1s;
+}
+
+.container.active .form-box {
+    right: 50%;
+}
+
+.form-box.register {
+    visibility: hidden;
+}
+
+.container.active .form-box.register {
+    visibility: visible;
+
+}
+
+form {
+    width: 100%;
+}
+
+.container h1 {
+    font-size: 36px;
+    margin: -10px 0;
+}
+
+.input-box {
+    position: relative;
+    margin: 30px 0;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 13px 50px 13px 20px;
+    background: #eee;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    color: #333;
+    font-weight: 500px;
+}
+
+.input-box input::placeholder {
+    color: #888;
+    font-weight: 400;
+}
+
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #888;
+}
+
+.forget-link {
+    margin: -15px 0 15px;
+}
+
+.forget-link a {
+    font-size: 14px;
+    color: #333;
+    text-decoration: none;
+}
+
+.btn {
+    width: 100%;
+    height: 48px;
+    background: #7494ec;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.container p {
+    font-size: 14.5px;
+    margin: 15px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 24px;
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.toggel-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.toggel-box::before {
+    content: '';
+    position: absolute;
+    left: -250%;
+    width: 300%;
+    height: 100%;
+    background: #7494ec;
+    border-radius: 140px;
+    z-index: 2;
+    transition: 1.4s ease-in-out;
+}
+
+.container.active .toggel-box::before {
+    left: 50%;
+
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: .4s ease-in-out;
+}
+
+.toggle-panel.toggle-left {
+    left: 0;
+    transition-delay: 1s;
+}
+
+.container.active .toggle-panel.toggle-left {
+    left: -50%;
+    transition-delay: .4s;
+}
+
+.toggle-panel.toggle-right {
+    right: -50%;
+    transition-delay: 1s;
+}
+
+.container.active .toggle-panel.toggle-right {
+    right: 0;
+    transition-delay: 1s;
+}
+
+.toggle-panel p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.toggle-panel .btn {
+    width: 160px;
+    height: 46px;
+    background: transparent;
+    border: 2px solid #fff;
+    box-shadow: none;
+
+}
+
+/* bootstrab Alert */
+/* Alert container to position the alerts */
+.alert-container {
+    position: fixed;
+    top: 20px;
+    /* Distance from the top of the viewport */
+    right: 20px;
+    /* Distance from the right of the viewport */
+    z-index: 1050;
+    /* Ensure it's above most other elements */
+    width: auto;
+    /* Adjust to fit the alert content */
+    max-width: 400px;
+    /* Optional: Restrict the max width */
+}
+
+/* Customize alert appearance */
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeIn 0.3s forwards, fadeOut 0.3s 2.7s forwards;
+    /* Fade in and out */
+}
+
+/* Alert types */
+.alert-success {
+    background-color: #d4edda;
+    border-left: 5px solid #28a745;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-left: 5px solid #dc3545;
+    color: #721c24;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc107;
+    color: #856404;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-left: 5px solid #17a2b8;
+    color: #0c5460;
+}
+
+/* Alert close button */
+.alert .btn-close {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: #000;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.alert .btn-close:hover {
+    opacity: 1;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade-out animation */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}

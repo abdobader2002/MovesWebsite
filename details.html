@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Details</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #0e0e22;
+      color: white;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    video {
+      max-width: 200%;
+      margin-top: 20px;
+      border-radius: 10px;
+      text-align: center;
+      align-items: center;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      text-decoration: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 5px;
+    }
+
+    a:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 id="movieTitle">Loading...</h1>
+    <p id="movieDescription"></p>
+    <img id="movieImage" alt="Movie Image">
+    <video id="movieVideo" controls style="display: none;">
+      <source id="videoSource" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <a href="homepage2.html">Back to Home</a>
+  </div>
+
+  <script>
+    // جلب بيانات الفيلم بناءً على معلمة index
+    const params = new URLSearchParams(window.location.search);
+    const movieIndex = params.get('index');
+    const movies = JSON.parse(localStorage.getItem('movies')) || [];
+
+    const movieTitle = document.getElementById('movieTitle');
+    const movieDescription = document.getElementById('movieDescription');
+    const movieImage = document.getElementById('movieImage');
+    const movieVideo = document.getElementById('movieVideo');
+    const videoSource = document.getElementById('videoSource');
+
+    if (movieIndex !== null && movies[movieIndex]) {
+      const movie = movies[movieIndex];
+
+      movieTitle.textContent = movie.title;
+      movieDescription.textContent = movie.description;
+      movieImage.src = movie.image;
+
+      if (movie.video) {
+        videoSource.src = movie.video;
+        movieVideo.style.display = 'block';
+        movieVideo.load();
+      }
+    } else {
+      document.querySelector('.container').innerHTML = `
+        <h1>Error</h1>
+        <p>Movie not found.</p>
+        <a href="index.html">Back to Home</a>
+      `;
+    }
+  </script>
+</body>
+
+</html>

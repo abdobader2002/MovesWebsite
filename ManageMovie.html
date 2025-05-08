@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Movies - Admin Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f0909;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #333;
+      color: white;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      margin: 4px;
+      background-color: #530b11;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #a04545;
+    }
+
+    .btn-delete {
+      background-color: #f44336;
+    }
+
+    .btn-delete:hover {
+      background-color: #e53935;
+    }
+
+    #editModal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(187, 182, 182, 0.1);
+    }
+
+    #movieTable {
+      color: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Manage Movies</h1>
+  </header>
+
+  <table id="movieTable">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Release Date</th>
+        <th>Actors</th>
+        <th>Author</th>
+        <th>Description</th>
+        <th>Rating</th>
+        <th>Image </th>
+        <th>Video </th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <div id="editModal">
+    <h3>Edit Movie</h3>
+    <label for="editTitle">Movie Title:</label>
+    <input type="text" id="editTitle" /><br><br>
+    <label for="editCategory">Category:</label>
+    <input type="text" id="editCategory" /><br><br>
+
+    <label for="editreleaseDate"> Release Date</label>
+    <input type="date" id="editreleaseDate" name="releaseDate" required><br><br>
+    <label for="editActors">Actors:</label>
+    <input type="text" id="editActors" /><br><br>
+    <label for="editAuthor">Author:</label>
+    <input type="text" id="editAuthor" /><br><br>
+
+    <label for="editdescription">Description</label><br>
+    <textarea id="description" name="description" rows="4" placeholder="Enter movie description"></textarea><br><br>
+    <label for="editRating">Rating:</label>
+    <input type="number" id="editRating" /><br><br>
+
+    <label for="editimage"> Image </label>
+    <input type="text" id="editimage" name="image" placeholder="Enter image URL" required><br><br>
+
+
+    <label for="editvideo"> Video </label>
+    <input type="text" id="editvideo" name="video" placeholder="Enter video URL" required><br><br>
+    <button class="btn" onclick="saveChanges()">Save Changes</button>
+    <button class="btn" onclick="closeModal()">Cancel</button>
+  </div>
+
+  <a href="index2.html"><button style="position: fixed;bottom: 20px; left: 50%;">back to home</button></a>
+
+  <script>
+
+    function loadMovies() {
+      const movies = JSON.parse(localStorage.getItem('movies')) || [];
+      renderMovies(movies);
+    }
+
+
+    function renderMovies(movies) {
+      const movieTableBody = document.querySelector('#movieTable tbody');
+      movieTableBody.innerHTML = '';
+
+      movies.forEach((movie, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>${movie.title}</td>
+        <td>${movie.category}</td>
+        <td>${movie.releaseDate}</td>
+        <td>${movie.actors}</td>
+        <td>${movie.author}</td>
+        <td>${movie.description}</td>
+        <td>${movie.rating}</td>
+        <td>${movie.image}</td>
+        <td>${movie.video}</td>
+        <td>
+          <button class="btn" onclick="editMovie(${index})">Edit</button>
+          <button class="btn btn-delete" onclick="deleteMovie(${index})">Delete</button>
+        </td>
+      `;
+        movieTableBody.appendChild(row);
+      });
+    }
+
+
+    function editMovie(index) {
+      const movies = JSON.parse(localStorage.getItem('movies')) || [];
+      const movie = movies[index];
+
+      if (movie) {
+        document.getElementById('editTitle').value = movie.title;
+        document.getElementById('editCategory').value = movie.category;
+        document.getElementById('editreleaseDate').value = movie.releaseDate;
+        document.getElementById('editActors').value = movie.actors;
+        document.getElementById('editAuthor').value = movie.author;
+        document.getElementById('description').value = movie.description;
+        document.getElementById('editRating').value = movie.rating;
+        document.getElementById('editimage').value = movie.image;
+        document.getElementById('editvideo').value = movie.video;
+
+        document.getElementById('editModal').style.display = 'block';
+        window.currentMovieIndex = index;
+      }
+    }
+
+
+    function closeModal() {
+      document.getElementById('editModal').style.display = 'none';
+    }
+
+
+    function saveChanges() {
+      const movies = JSON.parse(localStorage.getItem('movies')) || [];
+      const movie = movies[window.currentMovieIndex];
+
+      if (movie) {
+        movie.title = document.getElementById('editTitle').value;
+        movie.category = document.getElementById('editCategory').value;
+        movie.releaseDate = document.getElementById('editreleaseDate').value;
+        movie.actors = document.getElementById('editActors').value;
+        movie.author = document.getElementById('editAuthor').value;
+        movie.description = document.getElementById('description').value;
+        movie.rating = document.getElementById('editRating').value;
+        movie.image = document.getElementById('editimage').value;
+        movie.video = document.getElementById('editvideo').value;
+
+        localStorage.setItem('movies', JSON.stringify(movies));
+        renderMovies(movies);
+        closeModal();
+      }
+    }
+
+
+    function deleteMovie(index) {
+      const movies = JSON.parse(localStorage.getItem('movies')) || [];
+      movies.splice(index, 1);
+      localStorage.setItem('movies', JSON.stringify(movies));
+      renderMovies(movies);
+    }
+
+
+    function addMovie(title, category, releaseDate, actors, author, description, rating, image, video) {
+      const movies = JSON.parse(localStorage.getItem('movies')) || [];
+      movies.push({ title, category, releaseDate, actors, author, description, rating, image, video });
+      localStorage.setItem('movies', JSON.stringify(movies));
+      renderMovies(movies);
+    }
+
+    loadMovies();
+  </script>
+
+</body>
+
+</html>

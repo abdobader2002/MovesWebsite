@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJANGO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <script src="./script.js"></script>
+
+    <link rel="stylesheet" href="./style.css">
+
+
+</head>
+
+<body>
+    <div class="nav">
+        <div class="navbar-continer">
+            <div class="log-container">
+                <h1 class="logo"><a href="#">DJANGO</a></h1>
+            </div>
+            <div class="menu-container">
+                <ul class="menue-list">
+                    <li class="menue-list-item active"><button class="menulistbutton">Home</button></li>
+                    <li class="menue-list-item"><button class="menulistbutton" id="trendsbutton">Trends</button></li>
+                    <li class="menue-list-item"><button class="menulistbutton" id="moviebutton">Movies</button></li>
+                    <li class="menue-list-item"><button class="menulistbutton" id="TVbutton">TV</button></li>
+                </ul>
+            </div>
+            <div class="login-container" style="margin-right: 0px; padding-right: 0px;">
+                <span><a href="./index.html"><button class="loginbutton" id="home-login">login</button></a></span>
+            </div>
+
+            <div class="profile-container" id="profile-text-container">
+                <img src="./media/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg" alt="" class="prof-pic">
+                <div class="profile-text-container">
+                    <span class="profile-text">Profile</span>
+                    <i class="fa-solid fa-caret-down"></i>
+
+                    <!-- Dropdown Menu -->
+                    <ul class="dropdown-menu">
+                        <li>Notifications</li>
+                        <a href="./admin.html">
+                            <li style="display: none;" class="adminpanel" id="adminpanel">admin panel</li>
+                        </a>
+                        <li>Settings</li>
+                        <li>Logout</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Light and dark mode toggle -->
+            <div class="toggle">
+                <i class="fa-solid fa-moon toggle-icon"></i>
+                <i class="fa-solid fa-sun toggle-icon"></i>
+                <div class="toggle-ball"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="container">
+        <div class="conent-container">
+            <div class="feautured-content"
+                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('media/f-1.jpg');">
+                <img class="first-title" src="media/f-t-1.png" alt="">
+                <p class="feautured-disk" style="font-size: x-large;">
+                    <span style="display: block; font-size: 50px;"><b>Welcome.</b></span>
+                    Millions of movies, Explore now!..
+                </p>
+                <form action="get" id="inner-search" style="position: relative; width: 1170px; margin: auto;">
+                    <input type="search" name="search" id="search" placeholder="Search for a movie">
+                    <button type="submit"
+                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); height: 40px; width: 40px; border: none; border-radius: 50%; background-color: #d8d8d9; color: white; cursor: pointer; font-size: large;">
+                        🔍
+                    </button>
+                </form>
+                <h2 style="margin-left: 30px; margin-top: 140px;">
+                    <i class="fa-solid fa-film"></i>
+                    <a href="#" style="text-decoration: none; color:rgb(242, 59, 59)">WATCH NOW Mufasa....</a>
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="original">
+        <div class="movie-list-container" id="trendcontainer">
+            <h1 class="movie-list-title" style="color:rgb(242, 59, 59)">trends</h1>
+            <div class="movie-list-wrapper">
+                <div class="movie-list-item">
+                    <img class="movie-list-item-img" src="./trends/Carry_On_film_poster.jpg" alt="Carry on">
+                    <span class="movie-list-item-title">Carry On</span>
+                    <p class="movie-list-item-desc">December 13, 2024</p>
+                </div>
+                <div class="movie-list-item">
+                    <img class="movie-list-item-img" src="./trends/Dexter_Original_Sin_Season_1_poster.jpg"
+                        alt="dexter">
+                    <span class="movie-list-item-title">Dexter: Original Sin</span>
+                    <p class="movie-list-item-desc">December 13, 2024</p>
+                </div>
+                <div class="movie-list-item">
+                    <img class="movie-list-item-img" src="./trends/Mufasa_The_Lion_King_Movie_2024.jpeg" alt="mufasa">
+                    <span class="movie-list-item-title">Mufasa: The Lion King</span>
+                    <p class="movie-list-item-desc">December 9, 2024</p>
+                </div>
+                <div class="movie-list-item">
+                    <img class="movie-list-item-img" src="./trends/weddingdress.png" alt="weddingdress">
+                    <span class="movie-list-item-title">Wedding Dress</span>
+                    <p class="movie-list-item-desc">Nov 20, 2024</p>
+                </div>
+                <div class="movie-list-item">
+                    <img class="movie-list-item-img" src="./trends/passing dreams.png" alt="passing">
+                    <span class="movie-list-item-title">Passing Dreams</span>
+                    <p class="movie-list-item-desc">Nov 14, 2024</p>
+                </div>
+                <div class="movie-list-item">
+                    <img class="movie-list-item-img" src="./trends/Venom_The_Last_Dance_Poster.jpg" alt="venom">
+                    <span class="movie-list-item-title">Venom: The Last Dance</span>
+                    <p class="movie-list-item-desc">October 21, 2024</p>
+                </div>
+                <div class="movie-list-item">
+                    <img class="movie-list-item-img" src="./trends/Small_Things_Like_These_film_poster.jpg"
+                        alt="smallthings">
+                    <span class="movie-list-item-title">Small Things Like These</span>
+                    <p class="movie-list-item-desc">15 February 2024</p>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="movie-list-container" id="moviescontainer">
+            <h1 class="movie-list-title" style="color: rgb(242, 59, 59)">movies</h1>
+            <div class="movie-list-wrapper">
+                <div class="movie-list">
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./movies/kraven the hunter.png" alt="Kraven">
+                        <span class="movie-list-item-title">Kraven the Hunter</span>
+                        <p class="movie-list-item-desc">Dec 11, 2024</p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./movies/secret level.png" alt="secretlevel">
+                        <span class="movie-list-item-title" data-title="Secret Level">Secret Level</span>
+                        <p class="movie-list-item-desc" data-desc="Dec 10, 2024">Dec 10, 2024</p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./movies/al-harifa.png" alt="al harifa">
+                        <span class="movie-list-item-title">Al-Harifa 2: Remontada</span>
+                        <p class="movie-list-item-desc">Dec 04, 2024</p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./movies/who would beleive it.png" alt="min ysade2">
+                        <span class="movie-list-item-title">Who Would Believe It?</span>
+                        <p class="movie-list-item-desc">Nov 27, 2024</p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./movies/wicked.png" alt="wicked">
+                        <span class="movie-list-item-title">Wicked</span>
+                        <p class="movie-list-item-desc">Nov 20, 2024</p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./movies/red one.png" alt="red ones">
+                        <span class="movie-list-item-title">Red Ones</span>
+                        <p class="movie-list-item-desc"> Oct 31, 2024</p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./movies/anora.png" alt="anora">
+                        <span class="movie-list-item-title">Anora</span>
+                        <p class="movie-list-item-desc">Oct 14, 2024</p>
+                    </div>
+
+
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </div>
+        </div>
+
+
+        <div class="movie-list-container" id="TVcontainer">
+            <h1 class="movie-list-title" style="color:rgb(242, 59, 59)">TV</h1>
+            <div class="movie-list-wrapper">
+                <div class="movie-list">
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./tv/Sonic_the_Hedgehog_3_film_poster.jpg" alt="sonic">
+                        <span class="movie-list-item-title">Sonic the Hedgehog 3</span>
+                        <p class="movie-list-item-desc"> Dec 19, 2024 </p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./tv/skeleton crew.png" alt="star wars">
+                        <span class="movie-list-item-title">Star Wars: Skeleton Crew</span>
+                        <p class="movie-list-item-desc">Dec 02, 2024</p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./tv/moana.png" alt="moana">
+                        <span class="movie-list-item-title">Moana 2</span>
+                        <p class="movie-list-item-desc">Nov 21, 2024</p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./tv/miraculous.png" alt="at the edge">
+                        <span class="movie-list-item-title">At the Edge of Time</span>
+                        <p class="movie-list-item-desc">Nov 14, 2024</p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./tv/hetric.png" alt="Heretic">
+                        <span class="movie-list-item-title">Heretic</span>
+                        <p class="movie-list-item-desc">Oct 31, 2024</p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./tv/the wild robot.png" alt="wild">
+                        <span class="movie-list-item-title">The Wild Robot</span>
+                        <p class="movie-list-item-desc">Sep 08, 2024</p>
+                    </div>
+                    <div class="movie-list-item">
+                        <img class="movie-list-item-img" src="./tv/the mariachi.png" alt="Mariachi">
+                        <span class="movie-list-item-title">The Mariachi</span>
+                        <p class="movie-list-item-desc">Dec 03, 2024</p>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class="movie-footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>About Us</h2>
+                <p style="margin-left: 50px;">Welcome to DJANGO, your ultimate destination for movie lovers. Discover,
+                    review, and share your favorite movies!</p>
+            </div>
+            <div class="footer-section links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Now Showing</a></li>
+                    <li><a href="#">Coming Soon</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h2>Follow Us</h2>
+                <div class="social-links">
+                    <a href="#"><img src="media/fB.png" alt="Facebook"></a>
+                    <a href="#"><img src="media/x.png" alt="Twitter"></a>
+                    <a href="#"><img src="media/insta.jpg" alt="Instagram"></a>
+                    <a href="#"><img src="media/youtube.png" alt="YouTube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 DJANGO. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        let currentUserRole = localStorage.getItem('currentUserRole');
+        let currentUser = localStorage.getItem('currentUsername');
+        if (!currentUser) {
+            document.getElementById('profile-text-container').style.display = 'none';
+            document.getElementById('home-login').style.display = 'inline';
+
+
+        }
+        if (currentUserRole === 'admin') {
+            document.getElementById('adminpanel').style.display = 'inline';
+        } else {
+            document.getElementById('adminpanel').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="./addadmin_style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="alert-container" class="alert-container"></div>
+  <div class="container">
+    <div class="form-box addadmin">
+      <button class="close-btn" onclick="goBack()">×</button>
+
+      <form action="">
+        <h1>Add ADMIN</h1>
+        <div class="input-box">
+          <input type="text" id="fullName" placeholder="Enter your full name" required>
+          <i class='bx bxs-user-detail'></i>
+        </div>
+        <div class="input-box">
+          <input type="text" id="registerUsername" placeholder="Enter your username" required>
+          <i class='bx bxs-user'></i>
+        </div>
+        <div class="input-box">
+          <input type="email" id="email" placeholder="Enter your Email" required>
+          <i class='bx bx-envelope'></i>
+        </div>
+        <div class="input-box">
+          <input type="password" id="registerPassword" placeholder="Enter your password" required>
+          <i class='bx bxs-lock-alt'></i>
+        </div>
+        <button type="submit" class="btn">Register</button>
+        <p> Register by social media platforms</p>
+        <div class="social-icons">
+          <a href="#"><i class='bx bxl-google'></i></a>
+          <a href="#"><i class='bx bxl-facebook-square'></i></a>
+          <a href="#"><i class='bx bxl-linkedin'></i></a>
+          <a href="#"><i class='bx bxl-github'></i></a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function showAlert(message, type) {
+      let alertContainer = document.getElementById('alert-container');
+      let alertDiv = document.createElement('div');
+      alertDiv.className = `alert alert-${type} alert-dismissible fade show`;
+      alertDiv.role = 'alert';
+      alertDiv.innerHTML = `
+          ${message}
+          <button type="button" class="btn-close" onclick="closeAlert(this)">&times;</button>
+      `;
+      alertContainer.appendChild(alertDiv);
+      setTimeout(() => {
+        alertDiv.remove();
+      }, 3000);
+    }
+    function closeAlert(button) {
+      let alertDiv = button.parentElement;
+      alertDiv.remove();
+    }
+
+    var addadmin = document.querySelector('.form-box.addadmin form');
+    addadmin.addEventListener('submit', function (e) {
+      e.preventDefault();
+      let fullName = document.getElementById('fullName').value.trim();
+      let username = document.getElementById('registerUsername').value.trim();
+      let email = document.getElementById('email').value.trim();
+      let password = document.getElementById('registerPassword').value;
+      let role = "admin";
+
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      let existingUser = users.find(user => user.username === username);
+      if (existingUser) {
+        showAlert('Username already exists. Please choose another one.', 'danger');
+        return;
+      }
+      users.push({ fullName, username, email, password, role });
+      localStorage.setItem('users', JSON.stringify(users));
+      showAlert('New admin has been added successfully', 'success');
+      addadmin.reset();
+    });
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+
+</html>
